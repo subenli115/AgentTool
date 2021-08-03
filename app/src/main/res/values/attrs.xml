@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TwinklingRefreshLayout">
+        <attr name="tr_wave_height" format="dimension" />
+        <attr name="tr_head_height" format="dimension" />
+        <attr name="tr_bottom_height" format="dimension" />
+        <attr name="tr_overscroll_height" format="dimension" />
+        <attr name="tr_enable_loadmore" format="boolean" />
+        <attr name="tr_pureScrollMode_on" format="boolean" />
+        <attr name="tr_show_overlay_refreshview" format="boolean" />
+        <attr name="tr_headerView" format="dimension" />
+        <attr name="tr_bottomView" format="dimension" />
+        <attr name="onRefreshCommand" format="reference" />
+        <attr name="onLoadMoreCommand" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="HollowTextView">
+        <attr name="hollowTextView_background_color" format="color|reference"/>
+        <attr name="hollowTextView_corner_radius" format="dimension|reference"/>
+    </declare-styleable>
+    <declare-styleable name="NormalTitleBar">
+        <attr name="ntb_bg" format="reference" />
+        <attr name="ntb_right_img1" format="reference" />
+        <attr name="ntb_right_img2" format="reference" />
+        <attr name="ntb_right_img3" format="reference" />
+        <attr name="ntb_left_text" format="string" />
+        <attr name="ntb_right_text" format="string" />
+        <attr name="ntb_title_text" format="string" />
+        <attr name="ntb_left_text_color" format="color" />
+        <attr name="ntb_right_text_color" format="color" />
+        <attr name="ntb_right_text_size" format="float" />
+        <attr name="ntb_right_img_size" format="dimension" />
+        <attr name="ntb_img_padding" format="dimension" />
+        <attr name="ntb_tv_left" format="enum">
+            <enum name="show" value="0" />
+            <enum name="showAndFinish" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="ItemGroupView">
+        <attr name="itemView_leftText" format="string" />
+        <attr name="itemView_leftHintText" format="string" />
+        <attr name="itemView_rightText" format="string" />
+        <attr name="itemView_leftText_color" format="color" />
+        <attr name="itemView_rightText_color" format="color" />
+        <attr name="itemView_rightTextSize" format="dimension" />
+        <attr name="itemView_leftTextSize" format="dimension" />
+        <attr name="showBottomLine" format="boolean" />
+        <attr name="showRightArrow" format="boolean" />
+        <attr name="showRightImage" format="boolean" />
+        <attr name="showSlideSwitch" format="boolean" />
+        <attr name="rightIcon" format="reference" />
+        <attr name="leftIcon" format="reference" />
+        <attr name="leftTextIcon" format="boolean"
+
+            />
+    </declare-styleable>
+    <declare-styleable name="SwitchButton">
+        <attr name="sb_shadow_radius" format="reference|dimension" />
+        <attr name="sb_shadow_offset" format="reference|dimension" />
+        <attr name="sb_shadow_color" format="reference|color" />
+        <attr name="sb_uncheck_color" format="reference|color" />
+        <attr name="sb_checked_color" format="reference|color" />
+
+        <attr name="sb_border_width" format="dimension" />
+        <attr name="sb_checkline_color" format="reference|color" />
+        <attr name="sb_checkline_width" format="reference|dimension" />
+        <attr name="sb_uncheckcircle_color" format="reference|color" />
+        <attr name="sb_uncheckcircle_width" format="reference|dimension" />
+        <attr name="sb_uncheckcircle_radius" format="reference|dimension" />
+
+        <attr name="sb_checked" format="boolean" />
+        <attr name="sb_shadow_effect" format="reference|boolean" />
+        <attr name="sb_effect_duration" format="reference|integer" />
+        <attr name="sb_button_color" format="reference|color" />
+        <attr name="sb_show_indicator" format="reference|boolean" />
+        <attr name="sb_background" format="reference|color" />
+        <attr name="sb_enable_effect" format="reference|boolean" />
+    </declare-styleable>
+    <declare-styleable name="HollowTextView1">
+        <attr name="text" format="string"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="bgColor" format="color"/>
+        <attr name="cornerRadius" format="dimension"/>
+        <attr name="roundTopLeft" format="boolean"/>
+        <attr name="roundTopRight" format="boolean"/>
+        <attr name="roundBottomLeft" format="boolean"/>
+        <attr name="roundBottomRight" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="RoundImageView">
+        <!-- 描边宽度-->
+        <attr name="border_width1" format="dimension" />
+        <!-- 描边颜色-->
+        <attr name="border_color1" format="color" />
+        <!--圆角大小-->
+        <attr name="corner_radius" format="dimension" />
+        <!--左上圆角大小-->
+        <attr name="leftTop_corner_radius" format="dimension" />
+        <!--右上圆角大小-->
+        <attr name="rightTop_corner_radius" format="dimension" />
+        <!--左下圆角大小-->
+        <attr name="leftBottom_corner_radius" format="dimension" />
+        <!--右下圆角大小-->
+        <attr name="rightBottom_corner_radius" format="dimension" />
+        <!--图片类型：圆角或者圆形-->
+        <attr name="roun_type" format="enum">
+            <enum name="oval" value="2" />
+            <enum name="round" value="1" />
+            <enum name="circle" value="0" />
+        </attr>
+    </declare-styleable>
+</resources>

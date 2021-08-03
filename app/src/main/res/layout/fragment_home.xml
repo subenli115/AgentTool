@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hollow="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/ll_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="80dp">
+
+                <ImageView
+                    android:id="@+id/iv_weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_home_weather_cloudy" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/iv_weather"
+                    android:text="重庆  晴  24°~32°"
+                    android:textColor="@color/textColor_666"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/refreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/ll_top"
+                app:srlEnablePreviewInEditMode="true"
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="80dp"
+                        android:text="最新匹配(套)"
+                        android:textColor="@color/textColor_333"
+                        android:textSize="17sp" />
+
+                    <com.moxi.agenttool.view.ReflectionTextView
+                        android:id="@+id/rtv"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_title"
+                        android:textSize="200sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_click"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/rtv"
+                        android:layout_centerHorizontal="true"
+                        android:text="88"
+                        android:textColor="@color/transparent"
+                        android:textSize="200sp" />
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:layout_height="212dp"
+                        android:layout_alignTop="@+id/tv_num"
+                        android:layout_centerHorizontal="true"
+                        android:background="@mipmap/img_home_bg_number" />
+
+                    <com.moxi.agenttool.view.HollowTextView1
+                        android:id="@+id/tv_num"
+                        android:layout_width="match_parent"
+                        android:layout_height="212dp"
+                        android:textSize="200sp"
+                        android:layout_below="@+id/tv_title"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/tv_time"
+                android:layout_centerHorizontal="true"
+                android:text="今日提醒：3"
+                android:textColor="@color/textColor_333"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:paddingBottom="30dp"
+                android:text="07月01日(五月廿二)  星期四"
+                android:textColor="@color/textColor_999"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

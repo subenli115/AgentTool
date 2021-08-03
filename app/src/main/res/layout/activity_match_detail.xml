@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/apk/res-auto"
+    app:ignore="NamespaceTypo">
+
+    <data>
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.moxi.agenttool.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            binding:ntb_title_text="匹配详情"
+            binding:ntb_tv_left="showAndFinish"
+            tools:layout_constraintTop_toTopOf="parent" />
+
+        <com.moxi.agenttool.view.RoundImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_home_avatar_def_ard"
+            app:corner_radius="25dp"
+            app:roun_type="circle"
+            tools:layout_constraintLeft_toLeftOf="parent"
+
+            tools:layout_constraintTop_toBottomOf="@+id/ntb" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="22dp"
+            android:src="@mipmap/ic_home_avatar_def"
+            android:visibility="gone"
+            tools:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_cover"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/normal_bg_orange"
+            android:gravity="center"
+            android:paddingLeft="6dp"
+            android:paddingTop="3dp"
+            android:paddingRight="6dp"
+            android:paddingBottom="3dp"
+            android:text="匹配3套"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            tools:layout_constraintLeft_toLeftOf="@+id/iv_cover"
+            tools:layout_constraintTop_toBottomOf="@+id/iv_cover" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="4dp"
+            android:text="阿东卿"
+            android:textColor="@color/textColor_333"
+            android:textStyle="bold"
+            tools:layout_constraintLeft_toRightOf="@id/iv_cover"
+            tools:layout_constraintTop_toTopOf="@+id/iv_cover" />
+
+        <ImageView
+            android:id="@+id/tv_encryption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            android:src="@mipmap/ic_match_encryption"
+            tools:layout_constraintLeft_toLeftOf="@+id/tv_name"
+            tools:layout_constraintLeft_toRightOf="@id/iv_cover"
+            tools:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="18996028799"
+            android:textColor="@color/textColor_333"
+            tools:layout_constraintLeft_toRightOf="@id/tv_encryption"
+            tools:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+        <TextView
+            android:id="@+id/tv_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="备注：我说你听，我做你看，你说我1…"
+            android:textColor="@color/textColor_999"
+            android:textSize="14sp"
+            tools:layout_constraintLeft_toLeftOf="@+id/tv_name"
+            tools:layout_constraintLeft_toRightOf="@id/iv_cover"
+            tools:layout_constraintTop_toBottomOf="@+id/tv_phone" />
+
+        <ImageView
+            android:id="@+id/iv_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:src="@mipmap/ic_client_cell"
+            android:padding="15dp"
+            tools:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintTop_toTopOf="@+id/tv_name"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="13dp"
+            android:background="@color/viewLineColor"
+            tools:layout_constraintTop_toBottomOf="@+id/tv_num" />
+
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:id="@+id/magic_indicator"
+            android:layout_width="wrap_content"
+            tools:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="34dp"
+            android:paddingBottom="10dp"
+            tools:layout_constraintEnd_toEndOf="parent"
+            binding:layout_constraintTop_toBottomOf="@+id/tv_num"
+            android:layout_height="40dp" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            binding:layout_constraintBottom_toBottomOf="parent"
+            binding:layout_constraintTop_toBottomOf="@+id/magic_indicator"
+            tools:layout_constraintEnd_toEndOf="parent"
+            tools:layout_constraintStart_toStartOf="parent"
+
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

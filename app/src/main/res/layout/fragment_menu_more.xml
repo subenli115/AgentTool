@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    app:layout_constraintHorizontal_weight="1"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_menu_head_bg"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.moxi.agenttool.view.RoundImageView
+        android:id="@+id/iv_head"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="110dp"
+        app:border_color1="#ffffff"
+        app:border_width1="2dp"
+        android:src="@mipmap/ic_home_avatar_def_ard"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:roun_type="circle" />
+    <TextView
+        android:id="@+id/tv_nick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="14.5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_head"
+        android:text="131"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:textColor="@color/textColor_333"
+        />
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@mipmap/icon_btn_login_orange"
+        android:gravity="center_horizontal"
+        android:paddingLeft="6dp"
+        android:paddingTop="14.5dp"
+        android:paddingRight="6dp"
+        android:paddingBottom="3dp"
+        android:text="立即登录"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_head" />
+
+    <TextView
+        android:id="@+id/tv_center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="匹配中心"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login"
+        android:drawablePadding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="45dp"
+        app:layout_constraintRight_toLeftOf="@+id/tv_client"
+        android:textColor="@color/textColor_333"
+        android:gravity="center"
+        android:drawableTop="@mipmap/ic_menu_match"
+        />
+    <TextView
+        android:id="@+id/tv_client"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="客户维护"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="45dp"
+        android:gravity="center"
+        app:layout_constraintLeft_toRightOf="@+id/tv_center"
+        android:textColor="@color/textColor_333"
+        app:layout_constraintRight_toLeftOf="@+id/tv_remeber"
+        android:drawableTop="@mipmap/ic_menu_client"
+        />
+
+    <TextView
+        android:id="@+id/tv_remeber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="客户提醒"
+        android:gravity="center"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login"
+        android:drawablePadding="10dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="45dp"
+        app:layout_constraintLeft_toRightOf="@+id/tv_client"
+        android:textColor="@color/textColor_333"
+        android:drawableTop="@mipmap/ic_menu_remeber"
+        />
+    <TextView
+        android:id="@+id/tv_surrounding"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="周边雷达"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_center"
+        android:drawablePadding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="50dp"
+        app:layout_constraintRight_toLeftOf="@+id/tv_takephoto"
+        android:textColor="@color/textColor_333"
+        android:gravity="center"
+        android:drawableTop="@mipmap/ic_menu_surrounding"
+        />
+    <TextView
+        android:id="@+id/tv_takephoto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="图片识别"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_center"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        app:layout_constraintLeft_toRightOf="@+id/tv_center"
+        android:textColor="@color/textColor_333"
+        app:layout_constraintRight_toLeftOf="@+id/tv_remeber"
+        android:drawableTop="@mipmap/ic_menu_takephoto"
+        />
+
+    <TextView
+        android:id="@+id/tv_voice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="语音识别"
+        android:gravity="center"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_center"
+        android:drawablePadding="10dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="50dp"
+        app:layout_constraintLeft_toRightOf="@+id/tv_takephoto"
+        android:textColor="@color/textColor_333"
+        android:drawableTop="@mipmap/ic_menu_voice"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

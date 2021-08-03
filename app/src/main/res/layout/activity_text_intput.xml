@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F5F5">
+
+        <com.moxi.agenttool.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            binding:ntb_right_text="保存"
+            binding:ntb_tv_left="showAndFinish"
+            tools:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.moxi.agenttool.view.ClearEditText
+            android:id="@+id/cet"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_below="@+id/ntb"
+            android:layout_marginTop="11dp"
+            android:background="@color/white"
+            android:drawablePadding="10dp"
+            android:imeOptions="actionSearch"
+            android:paddingStart="68dp"
+            android:singleLine="true"
+            android:textColor="#666666"
+            android:textColorHint="@color/black_8e"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/cet"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="16dp"
+            android:text="电话"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:id="@+id/rl_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cet"
+            android:visibility="gone">
+
+
+            <TextView
+                android:id="@+id/tv_phone_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="注：1.哆啦秘书不会存储用户密钥，密钥只会存在用户的手机系统；2.首次设置密钥后，后续加密不用重复设置密钥；3.可以在手机的个人中心查看当前密钥。"
+                android:textColor="@color/textColor_999"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:id="@+id/tv_ase_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_phone_hint"
+                android:layout_margin="20dp"
+                android:background="@drawable/normal_bg_orange40"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="加密储存"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_ase_save"
+                android:layout_marginLeft="20dp"
+
+                android:layout_marginRight="20dp"
+                android:background="@drawable/normal_bg_orange_e4"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="直接保存"
+
+                android:textColor="#FF7730"
+                android:textSize="16sp"
+
+                />
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cet"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/normal_bg_orange_e4"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="添加标签"
+            android:textColor="#FF7730"
+            android:textSize="16sp"
+            android:visibility="gone"
+
+            />
+
+    </RelativeLayout>
+</layout>

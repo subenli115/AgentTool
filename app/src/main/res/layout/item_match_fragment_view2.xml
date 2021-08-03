@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.moxi.agenttool.ui.bean.MatchDetailHistoryResult.DataDTO.ListDTO" />
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="254dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="11dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.moxi.agenttool.view.RoundImageView
+                android:id="@+id/iv_bg"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/img_home_bg_number"
+                app:leftTop_corner_radius="10dp"
+                app:rightTop_corner_radius="10dp"
+                app:roun_type="round" />
+
+            <ImageView
+                android:id="@+id/iv_collection"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_match_collect"
+                />
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="110dp"
+
+                android:textColor="#323232"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_Price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="265-1400(万/套)"
+                android:textSize="16sp"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:textColor="#FF3B30" />
+
+            <TextView
+                android:id="@+id/tv_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_Price"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="渝中·解放碑 | 居室2/3/…"
+                android:textColor="@color/textColor_666"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_room"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="套内74-247㎡"
+                android:textColor="@color/textColor_666"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/tv_unit_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_area"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="均价35000元/㎡"
+                android:textColor="@color/textColor_666"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width,initial-scale=1,user-scalable=no" name="viewport">
+
+<body style="background-color: white;">
+
+<!--    <p id="result">返回值：</p>-->
+    <script src="https://s1.ljcdn.com/kepler/static/dist/common/jquery.min.js?_v=20210629164645"></script>
+
+    <script type="text/javascript">
+        //alert("aa");
+        const BeiKeUrl = "https://cq.fang.ke.com";
+        function ocCallJs(result) {
+            //document.getElementById('result').innerText = "result: " + result;
+            document.getElementById('result').innerText = "result:111 " + result;
+        }
+    function getUrl(location, areaStart, areaStop, priceStart, priceStop, houseTypes, page) {
+        // 房屋面积
+        let ar = "";
+        if (areaStart === 0 && areaStop === 0) {
+            ar = "";
+        } else {
+            ar = "bba" + String(areaStart) + "eba" + String(areaStop);
+        }
+        // 房屋预算
+        let pr = "";
+        if (priceStart === 0 && priceStop === 0) {
+            pr = "";
+        } else {
+            pr = "bp" + String(priceStart) + "ep" + String(priceStop);
+        }
+        // 房屋户型
+        let houseType = "";
+        for (i = 0; i < houseTypes.length; i++) {
+            houseType = houseType + houseTypes[i];
+        }
+        // 拼接url
+        if (ar + pr + houseType === "") {
+            return BeiKeUrl + "/loupan/" + location + "/";
+        }
+        return BeiKeUrl + "/loupan/" + location + "/" + ar + pr + houseType + page + "/";
+    }
+  function parseStringAsHtml(text) {
+        //document.getElementById('result').innerText = text["data"];
+
+        alert(text);
+        // 将string转为html对象
+        let parser = new DOMParser();
+        let doc = parser.parseFromString(text["data"], "text/html");
+        // 解析返回的结果数
+        let countDiv = doc.getElementsByClassName("resblock-have-find")[0];
+        let resultCount = Number(countDiv.getElementsByClassName("value")[0].textContent);
+        // 解析单个房源信息
+        let lis = doc.getElementsByClassName("resblock-list post_ulog_exposure_scroll has-results");
+        // 只需要前6个
+        let n = 0;
+        if (resultCount >= 6) {
+            n = 6;
+        } else {
+            n = lis.length;
+        }
+        let houses = [];
+        for (i = 0; i < n; i++) {
+            let li = lis[i];
+            let imgA = li.getElementsByClassName("resblock-img-wrapper")[0];
+            // 详情地址
+            let detailUrl = BeiKeUrl + imgA.attributes["href"].nodeValue;
+            // 楼盘名称
+            let title = imgA.attributes["title"].nodeValue;
+            // 图片地址
+            let imgUrl = imgA.getElementsByTagName("img")[0].attributes["data-original"].nodeValue;
+            let locationA = li.getElementsByClassName("resblock-location")[0];
+            let houseA = li.getElementsByClassName("resblock-room")[0];
+            // 楼盘地址
+            let locationStr = locationA.textContent;
+            // 楼盘户型
+            let houseType = ""
+            let spans = houseA.getElementsByTagName("span");
+            for (j = 0; j < spans.length; j++) {
+                let span = spans[j];
+                if (span.className !== "area") {
+                    houseType = houseType + span.textContent;
+                }
+            }
+            // 房屋面积
+            let houseArea = "";
+            if (houseA.getElementsByClassName("area").length ===1 ) {
+                houseArea = houseA.getElementsByClassName("area")[0].textContent;
+            }
+            // 楼盘单价
+            let priceStr = li.getElementsByClassName("number")[0].textContent;
+            let priceDesc = "";
+            if (li.getElementsByClassName("desc").length === 1) {
+                priceDesc = li.getElementsByClassName("desc")[0].textContent;
+            }
+            // 楼盘总价
+            let priceSecond = "";
+            if (li.getElementsByClassName("second").length === 1) {
+                priceSecond = li.getElementsByClassName("second")[0].textContent;
+            }
+            let house = {
+                detailUrl: detailUrl,
+                name: title,
+                imgUrl: imgUrl,
+                location: locationStr,
+                area: houseArea,
+                priceFirst: priceStr + priceDesc,
+                priceSecond: priceSecond,
+                type: houseType
+            };
+            console.log(house.detailUrl, house.name, house.location, house.imgUrl, house.area, house.priceFirst, house.priceSecond, house.type);
+            houses.push(house);
+        }
+
+        //document.getElementById('result').innerText = houses[0];
+        return houses;
+    }
+
+    
+    
+    
+    
+    
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.moxi.agenttool.wdiget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:ntb_title_text="详情"
+        app:ntb_tv_left="showAndFinish" />
+
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/ntb"
+        android:layout_height="match_parent"
+        android:id="@+id/webview"
+
+        />
+
+</RelativeLayout>

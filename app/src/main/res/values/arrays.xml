@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="base_chat_tabs">
+        <item>按字母</item>
+        <item>按分组</item>
+    </string-array>
+
+
+    <string-array name="base_match_tabs">
+        <item>匹配</item>
+        <item>收藏</item>
+        <item>历史</item>
+    </string-array>
+</resources>
