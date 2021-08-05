@@ -40,6 +40,9 @@ public class HistoryHouseListFragment extends CommHttpFragment<FragmentBaseCommo
         viewModel.getHistoryHouse(page+"",clientId);
     }
 
+
+
+
     @Override
     public void initParam() {
         super.initParam();

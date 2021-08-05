@@ -33,7 +33,7 @@ public class HomeActivity extends BaseActivity<ActivityDemoBinding, BaseViewMode
 
 
     public static void startAction(Context context) {
-        Intent starter = new Intent(context, MatchDetailActivity.class);
+        Intent starter = new Intent(context, HomeActivity.class);
         context.startActivity(starter);
     }
 

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <data>
+
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <com.moxi.agenttool.wdiget.NormalTitleBar
+        android:id="@+id/ntb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:ntb_right_img1="@mipmap/ic_client_add"
+        app:ntb_title_text="个人中心"
+        app:ntb_tv_left="showAndFinish" />
+
+    <ImageView
+        android:id="@+id/iv_head"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/ntb"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_home_avatar_def_ard"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/iv_head"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/textColor_333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="莘泽可"
+        />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/textColor_333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="13310239989"
+        />
+
+    <View
+        android:id="@+id/verLine"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_phone"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/viewLineColor_e5"
+        />
+
+    <com.moxi.agenttool.view.ItemGroupView
+        android:id="@+id/igv_voice"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:showRightArrow="true"
+
+        app:itemView_leftText="语音助手"
+        app:itemView_leftText_color="@color/textColor_333"
+        app:leftIcon="@mipmap/ic_personal_clean"
+        app:layout_constraintTop_toBottomOf="@+id/verLine"
+        app:leftTextIcon="false"
+        app:showBottomLine="false" />
+    <com.moxi.agenttool.view.ItemGroupView
+        android:id="@+id/igv_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:showRightArrow="true"
+        app:itemView_leftText="密钥"
+        app:itemView_leftText_color="@color/textColor_333"
+        app:leftIcon="@mipmap/ic_personal_password"
+        app:layout_constraintTop_toBottomOf="@+id/igv_voice"
+        app:leftTextIcon="false"
+        app:showBottomLine="false" />
+    <com.moxi.agenttool.view.ItemGroupView
+        android:id="@+id/igv_data"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:showRightArrow="true"
+        app:itemView_leftText="数据源"
+        app:itemView_leftText_color="@color/textColor_333"
+        app:leftIcon="@mipmap/ic_personal_data"
+        app:layout_constraintTop_toBottomOf="@+id/igv_pwd"
+        app:leftTextIcon="false"
+        app:showBottomLine="false" />
+    <com.moxi.agenttool.view.ItemGroupView
+        android:id="@+id/igv_recycle"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:showRightArrow="true"
+        app:itemView_leftText="回收站"
+        app:itemView_leftText_color="@color/textColor_333"
+        app:leftIcon="@mipmap/ic_personal_rubbish"
+        app:layout_constraintTop_toBottomOf="@+id/igv_data"
+        app:leftTextIcon="false"
+        app:showBottomLine="false" />
+
+    <com.moxi.agenttool.view.ItemGroupView
+        android:id="@+id/igv_cache"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:showRightArrow="true"
+        app:itemView_leftText="清理缓存"
+        app:itemView_leftText_color="@color/textColor_333"
+        app:leftIcon="@mipmap/ic_personal_clean"
+        app:layout_constraintTop_toBottomOf="@+id/igv_recycle"
+        app:leftTextIcon="false"
+        app:showBottomLine="false" />
+
+    <com.moxi.agenttool.view.ItemGroupView
+        android:id="@+id/igv_version"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:showRightArrow="true"
+        app:itemView_leftText="版本号"
+        app:itemView_leftText_color="@color/textColor_333"
+        app:leftIcon="@mipmap/ic_personal_version"
+        app:layout_constraintTop_toBottomOf="@+id/igv_cache"
+        app:leftTextIcon="false"
+        app:showBottomLine="false" />
+    <com.moxi.agenttool.view.ItemGroupView
+        android:id="@+id/igv_like"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:showRightArrow="true"
+        app:itemView_leftText="给个好评"
+        app:itemView_leftText_color="@color/textColor_333"
+        app:leftIcon="@mipmap/ic_personal_evaluation"
+        app:layout_constraintTop_toBottomOf="@+id/igv_version"
+        app:leftTextIcon="false"
+        app:showBottomLine="false" />
+
+
+
+    <TextView
+        android:id="@+id/tv_quit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/igv_like"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/normal_bg_orange_e4"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="退出登录"
+
+        android:textColor="#FF7730"
+        android:textSize="16sp"
+
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

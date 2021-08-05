@@ -30,7 +30,7 @@ public abstract class CommHttpFragment<V extends ViewDataBinding, VM extends Bas
     /**
      * 默认每次加载返回条数为5条
      */
-    private int mLoadCount = 5;
+    private int mLoadCount = 10;
     /**
      * 基类数据源
      */

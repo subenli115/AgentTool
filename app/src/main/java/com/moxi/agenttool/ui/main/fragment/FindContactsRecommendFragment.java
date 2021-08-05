@@ -19,6 +19,7 @@ import com.moxi.agenttool.ui.bean.FilterHouseResult;
 import com.moxi.agenttool.ui.bean.House;
 import com.moxi.agenttool.ui.main.activity.MatchDetailActivity;
 import com.moxi.agenttool.ui.main.viewmodel.MainViewModel;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 /**
  * @author feng wen jun
@@ -36,6 +37,7 @@ public class FindContactsRecommendFragment extends CommHttpFragment<FragmentBase
 
     @Override
     protected void loadData() {
+
     }
 
     @Override
@@ -44,12 +46,16 @@ public class FindContactsRecommendFragment extends CommHttpFragment<FragmentBase
     }
 
     @Override
+    public void onRefresh(RefreshLayout refreshLayout) {
+        baseBinding.refreshLayout.finishRefresh();
+    }
+
+    @Override
     public void initData() {
         super.initData();
         MatchDetailActivity activity = (MatchDetailActivity) getActivity();
         dataDTO = activity.getDataDTO();
         updateData(dataDTO.getHouseList());
-        baseBinding.refreshLayout.setEnableRefresh(false);
     }
 
     @Override

@@ -68,7 +68,7 @@ public class LoginViewModel extends BaseViewModel<DemoRepository> {
      *
      * */
     public void getUserInfo() {
-        signRepository.getUserInfo();
+        signRepository.getUserInfo(isLogin);
     }
 
 

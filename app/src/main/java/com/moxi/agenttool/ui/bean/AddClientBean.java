@@ -15,7 +15,7 @@ public class AddClientBean {
     private String builtArea;
     private String checkIn;
     private String city;
-    private Integer clientType;
+    private String clientType;
     private String direction;
     private String fitUp;
     private String houseType;
@@ -93,11 +93,11 @@ public class AddClientBean {
         this.city = city;
     }
 
-    public Integer getClientType() {
+    public String getClientType() {
         return clientType;
     }
 
-    public void setClientType(Integer clientType) {
+    public void setClientType(String clientType) {
         this.clientType = clientType;
     }
 

@@ -48,7 +48,7 @@ public class FilterHouseResult implements Serializable{
         private String clientUpdateTime;
         private String createTime;
         public List<House> houseList;
-        private Integer isprivatephone;
+        private String isPrivatePhone;
         private String name;
         private String phone;
         private String remark;
@@ -111,12 +111,12 @@ public class FilterHouseResult implements Serializable{
             this.houseList = houseList;
         }
 
-        public Integer getIsprivatephone() {
-            return isprivatephone;
+        public String getIsprivatephone() {
+            return isPrivatePhone;
         }
 
-        public void setIsprivatephone(Integer isprivatephone) {
-            this.isprivatephone = isprivatephone;
+        public void setIsprivatephone(String isprivatephone) {
+            this.isPrivatePhone = isPrivatePhone;
         }
 
         public String getName() {

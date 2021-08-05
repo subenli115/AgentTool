@@ -60,6 +60,13 @@
         <activity android:name="com.moxi.agenttool.ui.main.activity.ClientMaintenanceActivity"
             android:screenOrientation="portrait"
             />
+        <activity android:name="com.moxi.agenttool.ui.main.activity.AddClientTagActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name="com.moxi.agenttool.ui.main.activity.ClientDetailsActivity"
+            android:screenOrientation="portrait"
+            />
+
         <activity android:name="com.moxi.agenttool.ui.main.activity.AddClientActivity"
             android:screenOrientation="portrait"
             android:theme="@style/DefaultCityPickerTheme"
@@ -68,7 +75,9 @@
         <activity android:name="com.moxi.agenttool.ui.main.activity.TextInfoInputActivity"
             android:screenOrientation="portrait"
             />
-
+        <activity android:name="com.moxi.agenttool.ui.main.activity.UserInfoActivity"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name="com.moxi.agenttool.ui.base.activity.BaseWebActivity"
             android:screenOrientation="portrait"

@@ -12,7 +12,6 @@ package com.moxi.agenttool.global;
 public interface ApiKey {
 
     /**
-     * user/sms/send/{mobile}/{smsType}
      * 发送短信验证码
      */
     String USER_SMS_SEND = "user/sms/send";
@@ -25,6 +24,11 @@ public interface ApiKey {
      * 查询重点客户
      */
     String CILENT_QUERY_IMPORTANT = "client/query/important";
+
+    /**
+     * 查询客户
+     */
+    String CILENT_QUERY = "client/query";
 
     /**
      * 过滤客户的历史房源
@@ -68,6 +72,38 @@ public interface ApiKey {
      * 新增客户
      */
     String CLIENT_INSERT= "client/insert";
+
+
+    /**
+     * 查询登陆用户的标签列表
+     */
+    String USER_LABEL_QUERY= "user/label/query";
+
+    /**
+     * 客户资料
+     */
+    String CLIENT_QUERY_DETAIL= "client/query/detail";
+
+    /**
+     * 加入客户到匹配中心
+     */
+    String CLIENT_MATCH= "client/match";
+
+    /**
+     * 客户从匹配中心移除
+     */
+    String CLIENT_MATCH_REMOVE= "client/match/remove";
+
+    /**
+     * 查询匹配中心客户列表
+     */
+    String CLIENT_QUERY_MATCH= "client/query/match";
+
+    /**
+     * 删除客户（通过ID集合）
+     */
+    String CLIENT_DELETE= "client/delete";
+
 
 
 }

@@ -37,7 +37,7 @@ public abstract class CommHttpActivity<V extends ViewDataBinding, VM extends Bas
     /**
      * 默认每次加载返回条数为5条
      */
-    private int mLoadCount = 5;
+    private int mLoadCount =10;
     /**
      * 基类数据源
      */
@@ -62,6 +62,7 @@ public abstract class CommHttpActivity<V extends ViewDataBinding, VM extends Bas
     //第一次请求数据
     private boolean firstRequest = true;
     private View loadedTip1;
+    private boolean first;
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
@@ -81,6 +82,7 @@ public abstract class CommHttpActivity<V extends ViewDataBinding, VM extends Bas
         super.initData();
         intent = getIntent();
         mContext = this;
+        first=true;
         baseBinding = (ActivityBaseCommonBinding) binding;
         if (loadedTip == null) {
             loadedTip = ((ActivityBaseCommonBinding) binding).loadedTip;

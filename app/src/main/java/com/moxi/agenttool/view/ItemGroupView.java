@@ -3,6 +3,7 @@ package com.moxi.agenttool.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -193,6 +194,8 @@ public class ItemGroupView extends RelativeLayout {
         if(leftTextIcon){
             TextView ivLeft = (TextView) findViewById(R.id.iv_tv_left);
             ivLeft.setVisibility(VISIBLE);
+        }else {
+            tvLeftText.setTypeface(null, Typeface.BOLD);
         }
         if (leftDrawable != null) {
             ivLeft = (ImageView) findViewById(R.id.iv_item_group_left);

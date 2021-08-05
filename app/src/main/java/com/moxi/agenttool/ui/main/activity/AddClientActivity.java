@@ -37,6 +37,7 @@ import com.moxi.agenttool.ui.base.activity.BaseActivity;
 import com.moxi.agenttool.ui.bean.ASRresponse;
 import com.moxi.agenttool.ui.bean.AddClientBean;
 import com.moxi.agenttool.ui.bean.TagBean;
+import com.moxi.agenttool.ui.bean.UserTagBean;
 import com.moxi.agenttool.ui.main.viewmodel.MainViewModel;
 import com.moxi.agenttool.utils.ACache;
 import com.moxi.agenttool.utils.GsonUtils;
@@ -52,6 +53,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import me.goldze.mvvmhabit.utils.StringUtils;
 import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
@@ -75,9 +77,12 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
     private String areaName;
     private String cityName;
     private ArrayList<TagFlowLayout> views;
+    private String tagId;
+    private boolean isEdit;
 
-    public static void startAction(Context context) {
+    public static void startAction(Context context, boolean isEdit) {
         Intent starter = new Intent(context, AddClientActivity.class);
+        starter.putExtra("isEdit",isEdit);
         context.startActivity(starter);
     }
 
@@ -96,6 +101,13 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
     public void initData() {
         super.initData();
         initView();
+        Intent intent = getIntent();
+        if(intent!=null){
+             isEdit = intent.getBooleanExtra("isEdit", false);
+        }
+        if(isEdit){
+            binding.ntb.setNewTitleText("编辑");
+        }
         //预先加载仿iOS滚轮实现的全部数据
         mPicker.init(this);
     }
@@ -120,7 +132,23 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
                     binding.igvPhone.setRigthText(s);
             }
         });
+        LiveDataBus.get().with("userTagBean",UserTagBean.DataDTO.class).observe(this, new Observer<UserTagBean.DataDTO>() {
+            @Override
+            public void onChanged(UserTagBean.DataDTO userTagBean) {
+                if(userTagBean!=null){
+                    binding.igvTag.setRigthText(userTagBean.getName());
+                    tagId = userTagBean.getId();
+                }
 
+            }
+        });
+        viewModel.isAdd.observe(this, new Observer() {
+            @Override
+            public void onChanged(Object o) {
+                ToastUtils.showLong("添加成功");
+                finish();
+            }
+        });
     }
 
     @Override
@@ -159,6 +187,12 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
                 TextInfoInputActivity.startAction(mContext, type,binding.igvRemark.getRightText());
             }
         });
+        binding.igvTag.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                AddClientTagActivity.startAction(mContext);
+            }
+        });
         binding.igvLocation.setOnClickListener(this);
         binding.ntb.setOnRightTextListener(new OnNoDoubleClickListener() {
             @Override
@@ -169,6 +203,7 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
                 addClientBean.setArea(areaName);
                 addClientBean.setPhone(binding.igvPhone.getRightText());
                 addClientBean.setRemark(binding.igvRemark.getRightText());
+                addClientBean.setLabelId(tagId);
                 addClientBean.setAvatar("http://n.sinaimg.cn/photo/700/w1000h500/20210603/57a6-kracxep9657657.png");
                 for(int i=0;i<newHouseTags.length;i++){
                     if(newHouseTags[i].equals("budget")){
@@ -186,7 +221,16 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
 
                     }
                 }
-//                viewModel.addClient(addClientBean);
+                addClientBean.setClientType("2");
+                if(StringUtils.isEmpty(addClientBean.getName())||StringUtils.isEmpty(addClientBean.getArea())||StringUtils.isEmpty(addClientBean.getCity())
+                ||StringUtils.isEmpty(addClientBean.getAvatar())||StringUtils.isEmpty(addClientBean.getPhone())||StringUtils.isEmpty(addClientBean.getHouseType())||
+                        StringUtils.isEmpty(addClientBean.getBudget())){
+                    ToastUtils.showLong("还有必填项没有完成");
+                }else {
+                    viewModel.addClient(addClientBean);
+
+                }
+
             }
         });
         binding.ivDef01.setOnClickListener(this);
@@ -197,12 +241,6 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
         binding.tvTotalPrice.setOnClickListener(this);
         binding.tvUnitPrice.setOnClickListener(this);
         binding.tvSb.setOnClickListener(this);
-        binding.ntb.setOnRightImagListener(new OnNoDoubleClickListener() {
-            @Override
-            protected void onNoDoubleClick(View v) {
-                ToastUtils.showLong("还有必填项没有完成");
-            }
-        });
          views = new ArrayList<>();
         views.add(binding.tflBudget);
         views.add(binding.tflType);

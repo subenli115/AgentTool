@@ -19,10 +19,13 @@ import com.hjq.permissions.XXPermissions;
 import com.moxi.agenttool.BR;
 import com.moxi.agenttool.R;
 import com.moxi.agenttool.app.AppViewModelFactory;
+import com.moxi.agenttool.contract.AppConstans;
 import com.moxi.agenttool.databinding.ActivityLoginBinding;
 import com.moxi.agenttool.global.IConstants;
+import com.moxi.agenttool.livedatas.LiveDataBus;
 import com.moxi.agenttool.ui.base.activity.BaseActivity;
 import com.moxi.agenttool.ui.login.viewmodel.LoginViewModel;
+import com.moxi.agenttool.ui.main.activity.HomeActivity;
 import com.moxi.agenttool.wdiget.LoadingDialog;
 import com.moxi.agenttool.wdiget.OnNoDoubleClickListener;
 import com.moxi.agenttool.wdiget.SmsCodeView;
@@ -127,17 +130,12 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
 
     @Override
     public void initViewObservable() {
-        viewModel.verifyCode.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                ToastUtils.showLong("发送成功");
-            }
-        });
         viewModel.isLogin.observe(this, new Observer() {
             @Override
             public void onChanged(Object o) {
                 ToastUtils.showLong("登录成功");
-
+                HomeActivity.startAction(mContext);
+                LiveDataBus.get().with(AppConstans.BusTag.QUIT).postValue("");
             }
         });
     }

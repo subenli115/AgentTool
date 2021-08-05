@@ -33,7 +33,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
  * @Version: 1.0
  */
 
-public class SignRepository  implements LocalDataSource {
+public class SignRepository implements LocalDataSource {
     private volatile static SignRepository instance = null;
     private final LocalDataSource mLocalDataSource;
     private final BaseViewModel viewModel;
@@ -73,7 +73,7 @@ public class SignRepository  implements LocalDataSource {
                     public void onSuccess(String result) {
                         StringDataBean bean = GsonUtils.fromLocalJson(result, StringDataBean.class);
                         ToastUtils.showLong(bean.getMessage());
-                        if (StringUtils.equals(bean.getCode(),"200")) {
+                        if (StringUtils.equals(bean.getCode(), "200")) {
                             verifyCode.setValue(true);
                         }
 
@@ -85,11 +85,11 @@ public class SignRepository  implements LocalDataSource {
 
 
     public void codeLogin(final String phone, String verifyCode, final BaseSingleLiveEvent isLogin) {
-        HttpManager.get( ApiKey.USER_lOGIN_CODE)
+        HttpManager.get(ApiKey.USER_lOGIN_CODE)
                 .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
-                .params("code",verifyCode)
-                .params("username",phone)
+                .params("code", verifyCode)
+                .params("username", phone)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onError(ApiException e) {
@@ -100,12 +100,9 @@ public class SignRepository  implements LocalDataSource {
                     public void onSuccess(String result) {
                         UserLoginBean bean = GsonUtils.fromLocalJson(result, UserLoginBean.class);
                         if (bean != null) {
-                            if(bean.getData()!=null){
-                                isLogin.call();
-                            }
                             saveUserName(phone);
                             saveToken(bean.getData().getToken());
-                            getUserInfo();
+                            getUserInfo(isLogin);
                         }
                         LoadingDialog.cancelDialogForLoading();
                     }
@@ -113,8 +110,8 @@ public class SignRepository  implements LocalDataSource {
     }
 
 
-    public void getUserInfo() {
-        HttpManager.get( ApiKey.USER_USERIFO)
+    public void getUserInfo(final BaseSingleLiveEvent isLogin) {
+        HttpManager.get(ApiKey.USER_USERIFO)
                 .cacheMode(CacheMode.NO_CACHE)
                 .accessToken()
                 .cacheKey(this.getClass().getSimpleName())
@@ -128,17 +125,18 @@ public class SignRepository  implements LocalDataSource {
                     public void onSuccess(String result) {
                         UserInfoBean bean = GsonUtils.fromLocalJson(result, UserInfoBean.class);
                         UserInfoBean.DataDTO data = bean.getData();
-                        if (data!= null) {
+                        if (data != null) {
+                            isLogin.call();
+                            PreferenceManager.getInstance().setIsLogin(true);
                             PreferenceManager.getInstance().setCurrentUserAvatar(data.getAvatar());
                             PreferenceManager.getInstance().setCurrentUserNick(data.getNickName());
-                        }else {
+                        } else {
                             ToastUtils.showLong(bean.getMsg());
                         }
                         LoadingDialog.cancelDialogForLoading();
                     }
                 });
     }
-
 
 
     @Override

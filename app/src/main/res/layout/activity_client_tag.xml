@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F5F5">
+
+        <com.moxi.agenttool.wdiget.NormalTitleBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            binding:ntb_right_text="保存"
+            binding:ntb_tv_left="showAndFinish"
+            tools:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/ntb"
+            android:background="@color/white"
+            android:paddingLeft="12dp"
+            android:layout_marginBottom="20dp"
+            android:text="重要客户"
+            android:singleLine="true"
+            android:textColor="#333333"
+            android:textColorHint="@color/black_8e"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_name"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="16dp"
+            android:text="(系统默认)"
+            android:textColor="#999999"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tv_ase_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_margin="20dp"
+            android:background="@drawable/normal_bg_orange40"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="添加标签"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+
+            />
+
+
+    </RelativeLayout>
+</layout>

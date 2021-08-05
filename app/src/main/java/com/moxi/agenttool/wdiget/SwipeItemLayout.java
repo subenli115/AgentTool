@@ -82,6 +82,9 @@ public class SwipeItemLayout extends ViewGroup {
 
             mScrollRunnable.startScroll(mScrollOffset,-mMaxScrollOffset);
         }
+
+
+
     }
 
     public void close(){

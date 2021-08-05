@@ -47,7 +47,7 @@ public class ImportantBean {
         private String city;
         private String area;
         private String phone;
-        private String isprivatephone;
+        private String isPrivatePhone;
         private String createTime;
         private String type;
         private String budget;
@@ -126,11 +126,11 @@ public class ImportantBean {
         }
 
         public String getIsprivatephone() {
-            return isprivatephone;
+            return isPrivatePhone;
         }
 
         public void setIsprivatephone(String isprivatephone) {
-            this.isprivatephone = isprivatephone;
+            this.isPrivatePhone = isprivatephone;
         }
 
         public String getCreateTime() {

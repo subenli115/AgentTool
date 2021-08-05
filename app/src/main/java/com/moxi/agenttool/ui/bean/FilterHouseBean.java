@@ -19,7 +19,7 @@ public class FilterHouseBean implements Serializable {
     private String clientUpdateTime;
     private String createTime;
     private List<House> houseList;
-    private String isprivatephone;
+    private String isPrivatePhone;
     private String name;
     private String phone;
     private String remark;
@@ -85,11 +85,11 @@ public class FilterHouseBean implements Serializable {
     }
 
     public String getIsprivatephone() {
-        return isprivatephone;
+        return isPrivatePhone;
     }
 
-    public void setIsprivatephone(String isprivatephone) {
-        this.isprivatephone = isprivatephone;
+    public void setIsprivatephone(String isPrivatePhone) {
+        this.isPrivatePhone = isPrivatePhone;
     }
 
     public String getName() {

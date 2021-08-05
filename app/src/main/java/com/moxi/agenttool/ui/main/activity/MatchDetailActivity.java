@@ -38,6 +38,8 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorT
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import me.goldze.mvvmhabit.utils.StringUtils;
+
 /**
  * @author feng wen jun
  * @description 匹配详情
@@ -98,7 +100,14 @@ public class MatchDetailActivity extends BaseActivity<ActivityMatchDetailBinding
 //                CommonUtils.callPhone(mContext,dataDTO.getPhone());
             }
         });
+        binding.clOther.setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                ClientDetailsActivity.startAction(mContext,dataDTO.getClientId(),false);
+            }
+        });
         binding.vp.setAdapter(adapter);
+        binding.vp.setOffscreenPageLimit(3);
         MagicIndicator magicIndicator = (MagicIndicator) findViewById(R.id.magic_indicator);
         CommonNavigator commonNavigator = new CommonNavigator(this);
         commonNavigator.setAdapter(new CommonNavigatorAdapter() {
@@ -149,7 +158,8 @@ public class MatchDetailActivity extends BaseActivity<ActivityMatchDetailBinding
             binding.tvNum.setText("匹配" + dataDTO.getHouseList().size() + "套");
             binding.tvMark.setText(dataDTO.getRemark());
             binding.tvName.setText(dataDTO.getName());
-            if (!dataDTO.getIsprivatephone().equals("0")) {
+
+            if (!StringUtils.equals("0",dataDTO.getIsprivatephone())) {
                 binding.tvEncryption.setVisibility(View.VISIBLE);
             }else {
                 binding.tvEncryption.setVisibility(View.GONE);

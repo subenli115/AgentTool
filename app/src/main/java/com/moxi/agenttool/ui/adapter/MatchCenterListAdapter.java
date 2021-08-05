@@ -59,13 +59,12 @@ public class MatchCenterListAdapter
             if(!StringUtils.isEmpty(baseCustomViewModel.getAvatar())){
                 Glide.with(mContext).load(baseCustomViewModel.getAvatar()).into(binding.ivCover);
             }
-            if(!baseCustomViewModel.getIsprivatephone().equals("0")){
+            if(StringUtils.equals("0",baseCustomViewModel.getIsprivatephone())){
                 binding.tvEncryption.setVisibility(View.VISIBLE);
             }else {
                 binding.tvEncryption.setVisibility(View.GONE);
             }
             binding.tvNum.setText(baseCustomViewModel.getPhone());
-            binding.tvMark.setText(baseCustomViewModel.getRemark());
 
         }
 

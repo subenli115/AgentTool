@@ -12,6 +12,8 @@ import com.moxi.agenttool.R;
 import com.moxi.agenttool.databinding.ItemMatchFragmentViewBinding;
 import com.moxi.agenttool.ui.bean.House;
 
+import me.goldze.mvvmhabit.utils.StringUtils;
+
 /**
  * 应用模块:
  * <p>
@@ -53,7 +55,12 @@ public class BaseMatchDetailAdapter
             binding.setViewModel( baseCustomViewModel);
             binding.executePendingBindings();
             Glide.with(context).load(baseCustomViewModel.getImgUrl()).into(binding.ivBg);
-            binding.tvPrice.setText(baseCustomViewModel.getPriceSecond());
+            if(StringUtils.isEmpty(baseCustomViewModel.getPriceSecond())){
+                binding.tvPrice.setText("价格待定");
+            }else {
+
+                binding.tvPrice.setText(baseCustomViewModel.getPriceSecond());
+            }
             binding.tvArea.setText(baseCustomViewModel.getArea());
             binding.tvTitle.setText(baseCustomViewModel.getName());
             binding.tvUnitPrice.setText(baseCustomViewModel.getPriceFirst());

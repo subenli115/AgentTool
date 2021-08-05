@@ -163,6 +163,26 @@ public class AppApplication extends BaseApplication {
         topicBean = new TagBean();
         listBeans = new ArrayList<>();
 
+        listBeans.add(new TagBean.ListBean("有电梯", 1));
+        listBeans.add(new TagBean.ListBean("无电梯", 2));
+        topicBean.setList(listBeans);
+        topicBean.setType("lift");
+        ACache.get(this).put("lift", GsonUtils.toJson(topicBean), ACache.TIME_DAY * 99);
+
+
+        topicBean = new TagBean();
+        listBeans = new ArrayList<>();
+
+        listBeans.add(new TagBean.ListBean("塔楼", 1));
+        listBeans.add(new TagBean.ListBean("板楼", 2));
+        listBeans.add(new TagBean.ListBean("板塔结构", 3));
+        topicBean.setList(listBeans);
+        topicBean.setType("structure");
+        ACache.get(this).put("structure", GsonUtils.toJson(topicBean), ACache.TIME_DAY * 99);
+
+        topicBean = new TagBean();
+        listBeans = new ArrayList<>();
+
         listBeans.add(new TagBean.ListBean("在售", 1));
         listBeans.add(new TagBean.ListBean("未开盘", 2));
         listBeans.add(new TagBean.ListBean("售罄", 3));
@@ -184,6 +204,34 @@ public class AppApplication extends BaseApplication {
         topicBean.setType("type");
         ACache.get(this).put("type", GsonUtils.toJson(topicBean), ACache.TIME_DAY * 99);
 
+
+        topicBean = new TagBean();
+        listBeans = new ArrayList<>();
+
+        listBeans.add(new TagBean.ListBean("二手", 1));
+        listBeans.add(new TagBean.ListBean("新房", 2));
+        listBeans.add(new TagBean.ListBean("合租", 3));
+        listBeans.add(new TagBean.ListBean("整租", 4));
+        listBeans.add(new TagBean.ListBean("其他", 5));
+        topicBean.setList(listBeans);
+        topicBean.setType("clientType");
+
+
+        ACache.get(this).put("clientType", GsonUtils.toJson(topicBean), ACache.TIME_DAY * 99);
+
+
+        topicBean = new TagBean();
+        listBeans = new ArrayList<>();
+
+        listBeans.add(new TagBean.ListBean("满五", 1));
+        listBeans.add(new TagBean.ListBean("满二", 2));
+        listBeans.add(new TagBean.ListBean("近地铁", 3));
+        listBeans.add(new TagBean.ListBean("红本在手", 4));
+        topicBean.setList(listBeans);
+        topicBean.setType("feature");
+
+
+        ACache.get(this).put("feature", GsonUtils.toJson(topicBean), ACache.TIME_DAY * 99);
 
         topicBean = new TagBean();
         listBeans = new ArrayList<>();

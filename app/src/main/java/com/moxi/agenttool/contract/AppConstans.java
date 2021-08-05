@@ -26,6 +26,7 @@ public interface AppConstans {
     interface BusTag {
 
         String DELETE = "delete";
+        String QUIT = "quit";
         String CLOSE = "close";
         String UPDATE = "update";
         String UPDATE_CARD = "update_card";
