@@ -29,6 +29,7 @@ public interface AppConstans {
         String QUIT = "quit";
         String CLOSE = "close";
         String UPDATE = "update";
+        String KEY = "key";
         String UPDATE_CARD = "update_card";
         String FOLLOW = "follow";
         String UPDATE_FRAGMENT2 = "update_fragment2";

@@ -100,5 +100,8 @@ public class RecordAlertDialog extends Dialog {
 	
 	public void onCancel(View view) {
 		this.dismiss();
+		if (this.user != null) {
+			this.user.onResult(false, this.bundle);
+		}
 	}
 }

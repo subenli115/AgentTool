@@ -4,12 +4,11 @@
     android:layout_gravity="center"
     android:background="@drawable/normal_bg_white13"
     android:layout_height="wrap_content">
-<LinearLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    >
+  >
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -19,33 +18,47 @@
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:maxLines="2"
-        android:text="语音识别"
+        android:text="密钥解锁"
         android:layout_marginTop="20dp"
         android:textStyle="bold"
         android:textColor="#323232"
         android:textSize="17sp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_below="@+id/title"
-        android:layout_margin="12dp"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_client_add_voice"
-        />
     <TextView
         android:id="@+id/tv_hint"
         android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginBottom="20dp"
         android:layout_height="wrap_content"
-        android:text="请说出姓名，电话，小区，价格"
+        android:layout_below="@+id/title"
+        android:textSize="14sp"
+        android:textColor="@color/textColor_999"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="请输入密钥解锁电话号码"
+        />
+    <com.moxi.agenttool.view.PasswordToggleEditText
+        android:id="@+id/tv_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/tv_hint"
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/normal_bg_gray17"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_prompt_warn"
         />
     <View
         android:id="@+id/verLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/tv_hint"
+        android:layout_below="@+id/tv_pwd"
         android:background="#EBEBEB"
         android:layout_marginTop="5dp"/>
     <LinearLayout
@@ -74,12 +87,12 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="完成"
+            android:text="解锁"
             android:textColor="#007EE5"
             android:textSize="17sp"
             android:gravity="center"
             />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
 </RelativeLayout>

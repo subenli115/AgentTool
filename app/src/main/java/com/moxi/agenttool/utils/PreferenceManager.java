@@ -50,6 +50,7 @@ public class PreferenceManager {
 	private static String SHARED_KEY_CURRENTUSER_USERNAME = "SHARED_KEY_CURRENTUSER_USERNAME";
 	private static String SHARED_KEY_CURRENTUSER_USER_PASSWORD = "SHARED_KEY_CURRENTUSER_USER_PASSWORD";
 	private static String SHARED_KEY_CURRENTUSER_NICK = "SHARED_KEY_CURRENTUSER_NICK";
+	private static String SHARED_KEY_CURRENTUSER_ID = "SHARED_KEY_CURRENTUSER_ID";
 	private static String SHARED_KEY_ISLOGIN = "SHARED_KEY_ISLOGIN";
 	private static String SHARED_KEY_CURRENTUSER_AVATAR = "SHARED_KEY_CURRENTUSER_AVATAR";
 	private static String SHARED_KEY_CURRENTUSER_PHONE = "SHARED_KEY_CURRENTUSER_PHONE";
@@ -267,6 +268,12 @@ public class PreferenceManager {
 		editor.apply();
 	}
 
+	public void setCurrentUserId(String id) {
+		editor.putString(SHARED_KEY_CURRENTUSER_ID, id);
+		editor.apply();
+	}
+
+
 	public void setIsLogin(boolean isLogin) {
 		editor.putBoolean(SHARED_KEY_ISLOGIN, isLogin);
 		editor.apply();
@@ -295,6 +302,9 @@ public class PreferenceManager {
 		return mSharedPreferences.getString(SHARED_KEY_CURRENTUSER_NICK, "");
 	}
 
+	public String getCurrentUserId() {
+		return mSharedPreferences.getString(SHARED_KEY_CURRENTUSER_ID, "");
+	}
 	public boolean getCurrentUserIsLogin() {
 		return mSharedPreferences.getBoolean(SHARED_KEY_ISLOGIN, false);
 	}

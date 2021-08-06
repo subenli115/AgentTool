@@ -9,7 +9,6 @@ import com.moxi.agenttool.ui.login.LoginActivity;
 import com.moxi.agenttool.utils.ACache;
 import com.moxi.agenttool.utils.GsonUtils;
 import com.moxi.agenttool.utils.PreferenceManager;
-import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -18,6 +17,7 @@ import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.converter.GsonDiskConverter;
 import com.zhouyou.http.cache.model.CacheMode;
@@ -38,7 +38,9 @@ import me.jessyan.autosize.AutoSizeConfig;
 public class AppApplication extends BaseApplication {
 
     private static String BASE_URL;
-    private static final String OK_BASE_URL = "http://11.0.0.61:527/api/";
+
+
+    private static final String OK_BASE_URL = "http://w3826759p1.zicp.vip/api/";
     private static final String TEST_BASE_URL = "http://11.0.0.61:527/api/";
 
 
@@ -62,7 +64,7 @@ public class AppApplication extends BaseApplication {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
             @Override
             public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
-                return new MaterialHeader(context);//指定为经典Header，默认是 贝塞尔雷达Header
+                return new ClassicsHeader(context);//指定为经典Header，默认是 贝塞尔雷达Header
             }
         });
         //设置全局的Footer构建器

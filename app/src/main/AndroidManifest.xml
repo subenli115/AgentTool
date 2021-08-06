@@ -63,7 +63,13 @@
         <activity android:name="com.moxi.agenttool.ui.main.activity.AddClientTagActivity"
             android:screenOrientation="portrait"
             />
+        <activity android:name="com.moxi.agenttool.ui.main.activity.RemindListActivity"
+            android:screenOrientation="portrait"
+            />
         <activity android:name="com.moxi.agenttool.ui.main.activity.ClientDetailsActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name="com.moxi.agenttool.ui.main.activity.MyHouseListActivity"
             android:screenOrientation="portrait"
             />
 

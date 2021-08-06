@@ -4,12 +4,16 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.moxi.agenttool.R;
-import com.moxi.agenttool.ui.base.adapter.SearchItemAdapter;
+import com.moxi.agenttool.ui.adapter.ClientTagAdapter;
 import com.moxi.agenttool.ui.bean.AreaBean;
+import com.moxi.agenttool.wdiget.OnNoDoubleClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +25,11 @@ import java.util.List;
  */
 public class SearchTabLeft extends RelativeLayout implements ViewBaseAction {
 
-    private ListView mListView;
+    private RecyclerView mRecyLerView;
+    private TextView tvQd;
     private List<AreaBean> areaList;
     private OnSelectListener mOnSelectListener;
-    private SearchItemAdapter adapter;
-    private String mDistance;
+    private ClientTagAdapter adapter;
     private String showText = "地区";
     private Context mContext;
     private String selectId;
@@ -60,36 +64,23 @@ public class SearchTabLeft extends RelativeLayout implements ViewBaseAction {
 
 
         mContext = context;
-
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.search_single_item, this, true);
-        // setBackgroundDrawable(getResources().getDrawable(R.drawable.choosearea_bg_mid));
-        mListView = (ListView) findViewById(R.id.listViewSingle);
+        adapter = new ClientTagAdapter(R.layout.item_tag_client_view, mContext);
+        mRecyLerView = (RecyclerView) findViewById(R.id.listViewSingle);
+        tvQd = (TextView) findViewById(R.id.tv_qd);
+        mRecyLerView.setHasFixedSize(true);
+        mRecyLerView.setLayoutManager(new LinearLayoutManager(mContext));
+        mRecyLerView.setAdapter(adapter);
         areaList = new ArrayList<AreaBean>();
         // test
-
-        adapter = new SearchItemAdapter(context, areaList, 0, 0, 0);
-        adapter.setSelectedPosition(0);
-        adapter.setTextSize(17);
-//            for ( int i = 0 ; i < areaList.size () ; i++ ) {
-//                if (areaList.get (i).getAreaCode ().equals(selectId)) {
-//                    adapter.setSelectedPositionNoNotify (i);
-//                    showText = areaList.get (i).getAreaName ();
-//                    break;
-//                }
-//            }
-
-        mListView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new SearchItemAdapter.OnItemClickListener() {
-
+        tvQd.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
-            public void onItemClick(View view, int position) {
-                if (mOnSelectListener != null) {
-                    showText = areaList.get(position).getAreaName();
-                    mOnSelectListener.getValue(areaList.get(position).getAreaName(), areaList.get(position).getAreaName());
-                }
+            protected void onNoDoubleClick(View v) {
+
             }
         });
+
     }
 
     public void setOnSelectListener(OnSelectListener onSelectListener) {
@@ -97,9 +88,11 @@ public class SearchTabLeft extends RelativeLayout implements ViewBaseAction {
     }
 
     public void upData(List list) {
-//        adapter.testData(industryListBeans);
-
+            adapter.setNewData(list);
     }
+
+
+
 
     public interface OnSelectListener {
 

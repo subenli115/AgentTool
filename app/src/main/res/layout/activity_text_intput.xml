@@ -50,11 +50,49 @@
             android:textSize="14sp" />
 
         <RelativeLayout
+            android:id="@+id/rl_ase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_below="@+id/cet"
+            >
+            <TextView
+                android:id="@+id/tv_cancel_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="注：取消加密之后号码将正常显示。"
+                android:textColor="@color/textColor_999"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:id="@+id/tv_ase_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_cancel_hint"
+                android:layout_margin="20dp"
+                android:background="@drawable/normal_bg_orange40"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="取消加密"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/rl_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cet"
-            android:visibility="gone">
+            android:visibility="gone"
+            >
 
 
             <TextView

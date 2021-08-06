@@ -130,6 +130,7 @@ public class SignRepository implements LocalDataSource {
                             PreferenceManager.getInstance().setIsLogin(true);
                             PreferenceManager.getInstance().setCurrentUserAvatar(data.getAvatar());
                             PreferenceManager.getInstance().setCurrentUserNick(data.getNickName());
+                            PreferenceManager.getInstance().setCurrentUserMemberId(data.getId());
                         } else {
                             ToastUtils.showLong(bean.getMsg());
                         }

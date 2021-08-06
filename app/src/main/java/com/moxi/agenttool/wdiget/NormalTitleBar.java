@@ -35,7 +35,7 @@ public class NormalTitleBar extends RelativeLayout {
     private int imgWidth;
     private int backStyle;
     private int defPadding;
-    private int textRightColor = Color.parseColor("#666666");
+    private int textRightColor = Color.parseColor("#333333");
     private float textRightSize = 16f;
 
     public NormalTitleBar(Context context) {
@@ -364,7 +364,7 @@ public class NormalTitleBar extends RelativeLayout {
             createRightText();
         }
         tvRight.setText(text);
-        tvRight.setTextColor(Color.WHITE);
+        tvRight.setTextColor(textRightColor);
         setRightTitleVisibility(true);
         return tvRight;
     }

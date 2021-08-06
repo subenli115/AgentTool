@@ -6,9 +6,11 @@ package com.moxi.agenttool.utils;
  * @Author: join_lu
  * @CreateDate: 2021/7/27 18:09
  */
+
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.Base64.Decoder;
@@ -33,7 +35,33 @@ public class AESCipher {
         Encoder encoder = Base64.getEncoder();
         return encoder.encodeToString(encryptedBytes);
     }
+    /***
+     * MD5加密 生成32位md5码
+     *
+     * @return 返回32位md5码
+     */
+    public static String md5Encode(String inStr) throws Exception {
+        MessageDigest md5 = null;
+        try {
+            md5 = MessageDigest.getInstance("MD5");
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            e.printStackTrace();
+            return "";
+        }
 
+        byte[] byteArray = inStr.getBytes("UTF-8");
+        byte[] md5Bytes = md5.digest(byteArray);
+        StringBuffer hexValue = new StringBuffer();
+        for (int i = 0; i < md5Bytes.length; i++) {
+            int val = ((int) md5Bytes[i]) & 0xff;
+            if (val < 16) {
+                hexValue.append("0");
+            }
+            hexValue.append(Integer.toHexString(val));
+        }
+        return hexValue.toString();
+    }
     public static String aesDecryptString(String content, String key) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
         Decoder decoder = Base64.getDecoder();
         byte[] encryptedBytes = decoder.decode(content);

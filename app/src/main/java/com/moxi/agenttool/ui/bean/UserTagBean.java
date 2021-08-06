@@ -45,6 +45,15 @@ public class UserTagBean {
         private String name;
         private String updateTime;
         private String userId;
+        private boolean isSelect;
+
+        public boolean isSelect() {
+            return isSelect;
+        }
+
+        public void setSelect(boolean select) {
+            isSelect = select;
+        }
 
         public String getCreateTime() {
             return createTime;

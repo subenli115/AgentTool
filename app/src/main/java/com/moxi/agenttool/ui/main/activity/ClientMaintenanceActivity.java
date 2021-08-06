@@ -193,6 +193,7 @@ public class ClientMaintenanceActivity extends CommHttpActivity<ActivityBaseComm
             @Override
             public void onChanged(UserTagBean userTagBean) {
                 List<UserTagBean.DataDTO> data = userTagBean.getData();
+                searchTabLeft.upData(data);
             }
         });
         viewModel.clientListBeanMutableLiveData.observe(this, new Observer<ClientListBean>() {
@@ -245,6 +246,12 @@ public class ClientMaintenanceActivity extends CommHttpActivity<ActivityBaseComm
         pop.setFocusable(true);// 点击空白处时，隐藏掉pop窗口
         pop.showAsDropDown(headBinding.getRoot(), 0, 0, Gravity.LEFT);
         searchTabLeft.findViewById(R.id.view_bg).setOnClickListener(new OnNoDoubleClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                pop.dismiss();
+            }
+        });
+        searchTabLeft.findViewById(R.id.tv_qd).setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
                 pop.dismiss();

@@ -24,7 +24,7 @@ import android.widget.TextView;
 import com.moxi.agenttool.R;
 
 
-public class CommonAlertDialog extends Dialog {
+public class CommonDecryptAlertDialog extends Dialog {
 
 	public interface AlertDialogUser {
 		void onResult(boolean confirmed, String result);
@@ -39,7 +39,7 @@ public class CommonAlertDialog extends Dialog {
 
 
 
-	public CommonAlertDialog(Context context, String title, AlertDialogUser user) {
+	public CommonDecryptAlertDialog(Context context, String title, AlertDialogUser user) {
 		super(context);
 		this.title = title;
 		this.user=user;
@@ -53,7 +53,7 @@ public class CommonAlertDialog extends Dialog {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.layout_dialog_hint);
+		setContentView(R.layout.layout_dialog_decrypt);
 
 		TextView cancel = (TextView)findViewById(R.id.btn_cancel);
 		final TextView tvHint = (TextView) findViewById(R.id.tv_hint);

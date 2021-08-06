@@ -37,7 +37,6 @@ import com.moxi.agenttool.ui.base.activity.BaseActivity;
 import com.moxi.agenttool.ui.bean.ASRresponse;
 import com.moxi.agenttool.ui.bean.AddClientBean;
 import com.moxi.agenttool.ui.bean.TagBean;
-import com.moxi.agenttool.ui.bean.UserTagBean;
 import com.moxi.agenttool.ui.main.viewmodel.MainViewModel;
 import com.moxi.agenttool.utils.ACache;
 import com.moxi.agenttool.utils.GsonUtils;
@@ -47,12 +46,17 @@ import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import me.goldze.mvvmhabit.utils.SPUtils;
 import me.goldze.mvvmhabit.utils.StringUtils;
 import me.goldze.mvvmhabit.utils.ToastUtils;
 
@@ -70,7 +74,7 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
     private int type;
     private EventManager asr;
     private ASRresponse asRresponse;
-    private String result;
+    private String result="";
     private RecordAlertDialog commonAlertDialog;
     //申明对象
     CityPickerView mPicker=new CityPickerView();
@@ -79,6 +83,7 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
     private ArrayList<TagFlowLayout> views;
     private String tagId;
     private boolean isEdit;
+    private String mKey;
 
     public static void startAction(Context context, boolean isEdit) {
         Intent starter = new Intent(context, AddClientActivity.class);
@@ -102,6 +107,7 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
         super.initData();
         initView();
         Intent intent = getIntent();
+
         if(intent!=null){
              isEdit = intent.getBooleanExtra("isEdit", false);
         }
@@ -132,19 +138,37 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
                     binding.igvPhone.setRigthText(s);
             }
         });
-        LiveDataBus.get().with("userTagBean",UserTagBean.DataDTO.class).observe(this, new Observer<UserTagBean.DataDTO>() {
+        LiveDataBus.get().with("selectString",String.class).observe(this, new Observer<String>() {
             @Override
-            public void onChanged(UserTagBean.DataDTO userTagBean) {
-                if(userTagBean!=null){
-                    binding.igvTag.setRigthText(userTagBean.getName());
-                    tagId = userTagBean.getId();
+            public void onChanged(String select) {
+                if(select!=null){
+                    binding.igvTag.setRigthText(select);
                 }
 
+            }
+        });
+        LiveDataBus.get().with("selectId",String.class).observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String selectId) {
+                if(selectId!=null){
+                    tagId=selectId;
+                }
+
+            }
+        });
+
+        LiveDataBus.get().with(AppConstans.BusTag.KEY,String.class).observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String key) {
+                mKey=key;
             }
         });
         viewModel.isAdd.observe(this, new Observer() {
             @Override
             public void onChanged(Object o) {
+                if(!StringUtils.isEmpty(mKey)){
+                    SPUtils.getInstance().put("key",mKey);
+                }
                 ToastUtils.showLong("添加成功");
                 finish();
             }
@@ -177,7 +201,7 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
             @Override
             protected void onNoDoubleClick(View v) {
                 type = 1;
-                TextInfoInputActivity.startAction(mContext, type,binding.igvPhone.getRightText());
+                TextInfoInputActivity.startAction(mContext, type,binding.igvPhone.getRightText(),mKey);
             }
         });
         binding.igvRemark.setOnClickListener(new OnNoDoubleClickListener() {
@@ -190,7 +214,7 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
         binding.igvTag.setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                AddClientTagActivity.startAction(mContext);
+                AddClientTagActivity.startAction(mContext,binding.igvTag.getRightText());
             }
         });
         binding.igvLocation.setOnClickListener(this);
@@ -202,6 +226,7 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
                 addClientBean.setCity(cityName);
                 addClientBean.setArea(areaName);
                 addClientBean.setPhone(binding.igvPhone.getRightText());
+                
                 addClientBean.setRemark(binding.igvRemark.getRightText());
                 addClientBean.setLabelId(tagId);
                 addClientBean.setAvatar("http://n.sinaimg.cn/photo/700/w1000h500/20210603/57a6-kracxep9657657.png");
@@ -294,12 +319,21 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
                 break;
             case R.id.iv_voice:
                 initPermission();
-                asr.send(SpeechConstant.ASR_START, "{}", null, 0, 0);
+                Map<String,Object> params = new LinkedHashMap<>();
+                String event = SpeechConstant.ASR_START;
+                params.put(SpeechConstant.ACCEPT_AUDIO_VOLUME,false);
+                params.put(SpeechConstant.VAD_ENDPOINT_TIMEOUT,0);
+                params.put(SpeechConstant.DISABLE_PUNCTUATION,true);
+                String json = new JSONObject(params).toString();
+                asr.send(event, json, null, 0, 0);
                 commonAlertDialog = new RecordAlertDialog(mContext, new RecordAlertDialog.AlertDialogUser() {
+
                     @Override
                     public void onResult(boolean confirmed, Bundle bundle) {
                         if (confirmed) {
                             binding.tvDiscern.setText(result);
+                        }else {
+                            result="";
                         }
 
                         asr.send(SpeechConstant.ASR_STOP, "{}", null, 0, 0);
@@ -435,6 +469,7 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
     public void onEvent(String name, String params, byte[] data, int offset, int length) {
         if (name.equals(SpeechConstant.CALLBACK_EVENT_ASR_PARTIAL)) {
             // 识别相关的结果都在这里
+            Log.i("onEvent12", params);
             if (params == null || params.isEmpty()) {
                 return;
             }
@@ -447,12 +482,8 @@ public class AddClientActivity extends BaseActivity<ActivityAddClientBinding, Ma
 
                 if (asRresponse == null) return;
                 //从日志中，得出Best_result的值才是需要的，但是后面跟了一个中文输入法下的逗号，
-                result = asRresponse.getBest_result();
+                result += asRresponse.getBest_result();
 
-                if(result.contains("。")){
-                    result= result.replace('。', ' ').replace(',', ' ').trim();//替换为空格之后，通过trim去掉字符串的首尾空格
-
-                }
                 commonAlertDialog.setTvHint(result);
             }
         }

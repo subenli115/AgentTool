@@ -20,6 +20,8 @@ import com.moxi.agenttool.ui.bean.FilterHouseResult;
 import com.moxi.agenttool.ui.login.LoginActivity;
 import com.moxi.agenttool.ui.main.activity.ClientMaintenanceActivity;
 import com.moxi.agenttool.ui.main.activity.MatchingActivity;
+import com.moxi.agenttool.ui.main.activity.MyHouseListActivity;
+import com.moxi.agenttool.ui.main.activity.RemindListActivity;
 import com.moxi.agenttool.ui.main.activity.UserInfoActivity;
 import com.moxi.agenttool.utils.PreferenceManager;
 import com.moxi.agenttool.wdiget.OnNoDoubleClickListener;
@@ -70,6 +72,8 @@ public class RightMenuMoreFragment extends BaseFragment<FragmentMenuMoreBinding,
         initView();
         binding.tvClient.setOnClickListener(this);
         binding.tvCenter.setOnClickListener(this);
+        binding.tvRemeber.setOnClickListener(this);
+        binding.tvHouse.setOnClickListener(this);
         LiveDataBus.get().with(AppConstans.BusTag.ADDBEAN).observe(this, new Observer<Object>() {
             @Override
             public void onChanged(Object o) {
@@ -127,6 +131,12 @@ public class RightMenuMoreFragment extends BaseFragment<FragmentMenuMoreBinding,
                 break;
             case R.id.tv_center:
                 MatchingActivity.actionStart(getContext(), bean);
+                break;
+            case R.id.tv_remeber:
+                RemindListActivity.startAction(getContext());
+                break;
+            case R.id.tv_house:
+                MyHouseListActivity.startAction(getContext());
                 break;
         }
     }

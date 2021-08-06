@@ -56,6 +56,7 @@ public class UserInfoActivity extends BaseActivity<ActivityUserInfoBinding, Main
                 PreferenceManager.getInstance().removeCurrentUserInfo();
                 SPUtils.getInstance().remove(SPKeyGlobal.TOKEN);
                 SPUtils.getInstance().remove(SPKeyGlobal.R_TOKEN);
+                SPUtils.getInstance().remove("key");
                 PreferenceManager.getInstance().setIsLogin(false);
                 EasyHttp.clearCache();
                 finish();

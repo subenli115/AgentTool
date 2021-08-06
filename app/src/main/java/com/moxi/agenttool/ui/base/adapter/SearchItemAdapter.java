@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.moxi.agenttool.R;
 import com.moxi.agenttool.ui.bean.AreaBean;
+import com.moxi.agenttool.ui.bean.UserTagBean;
 
 import java.util.List;
 
@@ -53,17 +54,17 @@ public class SearchItemAdapter extends ArrayAdapter<AreaBean> {
         init ();
     }
 
-//    public void testData(List<IndustryListBean> industryListBeans){
-//        AreaBean bean;
-//        for ( int i = 0 ; i < industryListBeans.size() ; i++ ) {
-//            bean = new AreaBean ();
-//            bean.setAreaName (industryListBeans.get(i).getIndustryName());
-//            bean.setAreaCode (industryListBeans.get(i).getIndustryId());
-//            mListData.add (bean);
-//        }
-//        setSelectedPosition (0);
-//       notifyDataSetChanged();
-//    }
+    public void testData(List<UserTagBean.DataDTO> dataDTOS){
+        AreaBean bean;
+        for ( int i = 0 ; i < dataDTOS.size() ; i++ ) {
+            bean = new AreaBean ();
+            bean.setAreaName (dataDTOS.get(i).getName());
+            bean.setAreaCode (dataDTOS.get(i).getId());
+            mListData.add (bean);
+        }
+        setSelectedPosition (0);
+       notifyDataSetChanged();
+    }
 
     private void init(){
         onClickListener = new OnClickListener () {
@@ -130,7 +131,7 @@ public class SearchItemAdapter extends ArrayAdapter<AreaBean> {
     public View getView(int position,View convertView,ViewGroup parent){
         TextView view;
         if (convertView == null) {
-            view = (TextView) LayoutInflater.from (mContext).inflate (R.layout.search_choose_item, parent, false);
+            view = (TextView) LayoutInflater.from (mContext).inflate (R.layout.search_choose_tag_item, parent, false);
         } else {
             view = (TextView) convertView;
         }

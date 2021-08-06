@@ -11,4 +11,14 @@
         <item>收藏</item>
         <item>历史</item>
     </string-array>
+
+
+    <string-array name="base_remind">
+        <item>客户提醒</item>
+        <item>我的提醒</item>
+    </string-array>
+    <string-array name="base_my_house">
+        <item>在租/在售</item>
+        <item>过期房源</item>
+    </string-array>
 </resources>

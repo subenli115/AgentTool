@@ -161,6 +161,21 @@
         android:textColor="@color/textColor_333"
         android:drawableTop="@mipmap/ic_menu_voice"
         />
+    <TextView
+        android:id="@+id/tv_house"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="我的房源"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_voice"
+        android:drawablePadding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="50dp"
+        app:layout_constraintRight_toLeftOf="@+id/tv_takephoto"
+        android:textColor="@color/textColor_333"
+        android:gravity="center"
+        android:drawableTop="@mipmap/ic_home_listings"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

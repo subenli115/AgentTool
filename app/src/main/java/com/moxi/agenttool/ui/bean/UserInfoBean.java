@@ -41,7 +41,7 @@ public class UserInfoBean {
         private String avatar;
         private String createTime;
         private Integer deleted;
-        private Integer id;
+        private String id;
         private String nickName;
         private String password;
         private String remark;
@@ -75,11 +75,11 @@ public class UserInfoBean {
             this.deleted = deleted;
         }
 
-        public Integer getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(Integer id) {
+        public void setId(String id) {
             this.id = id;
         }
 

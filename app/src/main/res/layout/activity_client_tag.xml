@@ -17,11 +17,10 @@
             android:id="@+id/ntb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            binding:ntb_title_text="标签"
             android:background="@color/white"
-            binding:ntb_right_text="保存"
             binding:ntb_tv_left="showAndFinish"
             tools:layout_constraintTop_toTopOf="parent" />
-
 
         <TextView
             android:id="@+id/tv_name"
